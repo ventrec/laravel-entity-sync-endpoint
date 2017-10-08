@@ -1,0 +1,17 @@
+{
+  "name": "ventrec/laravel-entity-sync-client",
+  "description": "Endpoint that handles syncing of entities",
+  "type": "package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Runar Jørgensen",
+      "email": "ventrec@ventrec.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ventrec\\LaravelEntitySyncClient\\": "src/"
+    }
+  }
+}
