@@ -4,23 +4,34 @@ namespace Ventrec\LaravelEntitySyncClient\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Ventrec\LaravelEntitySyncClient\Exceptions\UnknownEntityException;
+use Ventrec\LaravelEntitySyncClient\Http\Requests\DeletedEntityRequest;
 use Ventrec\LaravelEntitySyncClient\Http\Requests\EntityRequest;
 
 class EntitySyncController extends Controller
 {
     public function store(EntityRequest $request)
     {
-        app($this->resolveEntity($request))->create($request->entity);
+        app($this->resolveEntity($request))->insert($request->entity);
     }
 
     public function update(EntityRequest $request)
     {
-        app($this->resolveEntity($request))->update($request->entity);
+        $data = collect($request->entity);
+
+        app($this->resolveEntity($request))
+            ->whereId($data->get('id'))
+            ->update($data->except('id')->toArray());
     }
 
-    public function delete(EntityRequest $request)
+    public function delete(DeletedEntityRequest $request)
     {
-        app($this->resolveEntity($request))->findOrFail($request->entity->id)->delete();
+        $entity = app($this->resolveEntity($request))->findOrFail($request->entity_id);
+
+        if ($request->force_delete) {
+            $entity->forceDelete();
+        } else {
+            $entity->delete();
+        }
     }
 
     private function resolveEntity($request)

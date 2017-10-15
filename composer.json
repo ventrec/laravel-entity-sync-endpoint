@@ -13,5 +13,12 @@
     "psr-4": {
       "Ventrec\\LaravelEntitySyncClient\\": "src/"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ventrec\\LaravelEntitySyncClient\\LaravelEntitySyncClientProvider"
+      ]
+    }
   }
 }
