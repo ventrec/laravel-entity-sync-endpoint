@@ -1,5 +1,5 @@
 {
-  "name": "ventrec/laravel-entity-sync-client",
+  "name": "ventrec/laravel-entity-sync-endpoint",
   "description": "Endpoint that handles syncing of entities",
   "type": "package",
   "license": "MIT",
