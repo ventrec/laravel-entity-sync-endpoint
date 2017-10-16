@@ -11,8 +11,8 @@ The structure of your tables should be the same on both the master database and 
 ## Installation
 
 1. `composer require ventrec/laravel-entity-sync-endpoint`
-2. Add `Ventrec\Ventrec\LaravelEntitySyncClient\LaravelEntitySyncClientProvider::class` to providers in app.php
-3. Publish the config file `php artisan vendor:publish --provider="Ventrec\Ventrec\LaravelEntitySyncClient\LaravelEntitySyncClientProvider"`
+2. Add `Ventrec\LaravelEntitySyncClient\LaravelEntitySyncClientProvider::class` to providers in app.php
+3. Publish the config file `php artisan vendor:publish --provider="Ventrec\LaravelEntitySyncClient\LaravelEntitySyncClientProvider"`
 4. Update the config file
     - Add the entities that you expect to receive requests for. This should be the same entities that you have entered in the master config.
     - Enter an api token that should be used to verify the requests. This should be the same token that was used in the master config.
