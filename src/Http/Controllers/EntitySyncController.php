@@ -11,7 +11,7 @@ class EntitySyncController extends Controller
 {
     public function store(EntityRequest $request)
     {
-        app($this->resolveEntity($request))->insert($request->entity);
+        app($this->resolveEntity($request))->create($request->entity);
     }
 
     public function update(EntityRequest $request)
@@ -19,7 +19,7 @@ class EntitySyncController extends Controller
         $data = collect($request->entity);
 
         app($this->resolveEntity($request))
-            ->whereId($data->get('id'))
+            ->findOrFail($data->get('id'))
             ->update($data->except('id')->toArray());
     }
 

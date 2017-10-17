@@ -18,6 +18,10 @@ The structure of your tables should be the same on both the master database and 
     - Enter an api token that should be used to verify the requests. This should be the same token that was used in the master config.
     - (Optional) Enter a prefix for the api-endpoint. If no prefix is entered, all requests will be sent to `/entity-sync`
 
+## Usage
+
+All models that is used must have `protected $guarded = []`.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
